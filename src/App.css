@@ -1,0 +1,300 @@
+
+
+
+
+
+@font-face {
+    font-family: BoldHead;
+    src: url("./assets/Boldhead.otf");
+}
+
+
+.navBarCont{
+    width: 100%;
+    padding: 0.5em;
+    display: flex;
+    border-bottom: 2px solid #000;
+    position: relative;
+}
+
+.navbar{
+    display: flex;
+    /*justify-content: space-between;*/
+    align-items: center;
+    max-width: 1700px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.humberger{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.5s linear;
+    margin-left: 15px;
+}
+
+
+.humberger:hover{
+    transform: scale(1.2);
+}
+
+
+.bar{
+    position: relative;
+    width: 85%;
+    height: 2px;
+    background-color: #fff;
+}
+
+.bar:before, .bar:after{
+    position: absolute;
+    content: "";
+    width: 80%;
+    height: 2px;
+    background-color: #fff;
+}
+
+.bar::before{
+    top: -10px;
+    left: 3px;
+}
+
+.genres{
+    position: absolute;
+    left: 0;
+    background-color: #000;
+    bottom: -572%;
+    border: 2px solid red;
+    width: min(200px, 40vw);
+    transform-origin: top;
+    transform: scaleY(0);
+}
+
+.genres li{
+    width: 100%;
+    text-align: center;
+    margin: 0.5em 0;
+    background-color: #000;
+    color: #Fff;
+}
+
+.appear{
+    animation: appear 0.8s ease forwards;
+}
+
+/*.disappear{
+    animation: disappear 0.8s ease forwards;
+}*/
+
+
+
+
+.bar:after{
+    bottom: -10px;
+    left: 3px;
+}
+
+
+.name{
+    font-family: BoldHead, Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+.searchDiv{
+    width: max(70%, 100px);
+    display: flex;
+    margin: 0 auto;
+}
+
+
+.searchDiv input{
+    width: 85%;
+    margin-right: 15px;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+
+.searchBtn{
+    border: none;
+    outline: none;
+    position: relative;
+    background-color: transparent;
+    padding: 10px 15px;
+}
+
+
+
+.searchBtn::before{
+    position: absolute;
+    content: "";
+    height: 2px;
+    background-color: #000;
+    width: 0;
+    top: -2px;
+    left: 0;
+    transition: width 0.5s linear;
+}
+
+.searchBtn::after{
+    position: absolute;
+    content: "";
+    height: 2px;
+    background-color: #000;
+    width: 0;
+    bottom: -2px;
+    right: 0;
+    transition: width 0.5s linear;
+}
+
+.searchBtn:hover::before, .searchBtn:hover::after{
+    width: 100%;
+}
+
+
+.checkoutLogo{
+    width: 40px;
+    height: 40px;
+}
+
+
+
+.welcomeSection{
+    width: 100%;
+    min-height: 950px;
+    border-bottom: 2px solid black;
+}
+
+
+.gameScroll{
+    display: flex;
+    overflow-x: scroll;
+    background-color: #000;
+    color: #fff;
+}
+
+.GameCard{
+    margin: 0 1em;
+}
+
+.GameDescription{
+    width: 100%;
+}
+
+
+
+.imgCont{
+    position: relative;
+}
+
+
+.reactions{
+    width: 60px;
+    height: 20px;
+    position: absolute;
+    bottom: 30px;
+    text-align: center;
+    border-radius: 30px;
+    left: 15px;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.7s linear;
+    cursor: pointer;
+}
+
+
+.metacritic{
+    position: absolute;
+    width: 35px;
+    height: 16px;
+    right: 15px;
+    bottom: 30px;
+    color: #000;
+    text-align: center;
+    border-radius: 5px;
+}
+
+
+.reactions:hover{
+    transform: scale(1.2);
+}
+
+
+.star {
+  width: 14px;  
+  aspect-ratio: 1;
+  background-color: #fff;
+  clip-path: polygon(50% 0,
+    calc(50%*(1 + sin(.4turn))) calc(50%*(1 - cos(.4turn))),
+    calc(50%*(1 - sin(.2turn))) calc(50%*(1 - cos(.2turn))),
+    calc(50%*(1 + sin(.2turn))) calc(50%*(1 - cos(.2turn))),
+    calc(50%*(1 - sin(.4turn))) calc(50%*(1 - cos(.4turn))) 
+   ); 
+  
+}
+
+
+
+
+
+.imgCont img{
+    width: 300px;
+    height: 300px;
+    border-radius: 15px 15px 0 0;
+}
+
+
+
+.GameDescription{
+    text-align: center;
+    width: 100%;
+}
+
+
+.gameGenre{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.genre{
+    padding: 10px;
+    border: none;
+    margin: 0 10px;
+    outline: none;
+    border-radius: 20px;
+    background-color : transparent
+}
+
+
+@keyframes appear {
+    0%{
+        transform: scaleY(0);
+    }
+    60%{
+        transform: scaleY(120%);
+    }
+    100%{
+        transform: scaleY(100%);
+    }
+}
+
+
+@keyframes disappear {
+    0%{
+        transform: scaleY(100%);
+    }
+    100%{
+        transform: scaleY(0);
+    }
+}
