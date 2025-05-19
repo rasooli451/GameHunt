@@ -13,8 +13,10 @@
     width: 100%;
     padding: 0.5em;
     display: flex;
-    border-bottom: 2px solid #000;
+    border-bottom: 2px solid #3a3737;
     position: relative;
+    background-color: #000;
+    color: #fff;
 }
 
 .navbar{
@@ -69,8 +71,7 @@
     position: absolute;
     left: 0;
     background-color: #000;
-    bottom: -572%;
-    border: 2px solid red;
+    bottom: -1000%;
     width: min(200px, 40vw);
     transform-origin: top;
     transform: scaleY(0);
@@ -79,9 +80,15 @@
 .genres li{
     width: 100%;
     text-align: center;
-    margin: 0.5em 0;
     background-color: #000;
+    padding: 0.5em;
+    font-size: 1.3em;
     color: #Fff;
+    cursor: pointer;
+}
+
+.genres li:hover{
+    background-color: #353434;
 }
 
 .appear{
@@ -118,6 +125,10 @@
     margin-right: 15px;
     padding: 10px;
     border-radius: 20px;
+    border: 2px solid #534a4ab6;
+    outline: none;
+    color: #fff;
+    background: transparent;
 }
 
 
@@ -126,6 +137,8 @@
     outline: none;
     position: relative;
     background-color: transparent;
+    color: #Fff;
+    cursor: pointer;
     padding: 10px 15px;
 }
 
@@ -135,7 +148,7 @@
     position: absolute;
     content: "";
     height: 2px;
-    background-color: #000;
+    background-color: #fff;
     width: 0;
     top: -2px;
     left: 0;
@@ -146,7 +159,7 @@
     position: absolute;
     content: "";
     height: 2px;
-    background-color: #000;
+    background-color: #fff;
     width: 0;
     bottom: -2px;
     right: 0;
@@ -169,18 +182,65 @@
     width: 100%;
     min-height: 950px;
     border-bottom: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+}
+.welcome h1{
+    font-size: 5em;
 }
 
-
-.gameScroll{
-    display: flex;
-    overflow-x: scroll;
+.Top100, .popularLastYear{
     background-color: #000;
     color: #fff;
 }
 
+
+.gameDiv{
+    width: 90%;
+    margin: 0 auto;
+    padding: 1em;
+    position: relative;
+}
+
+.seeMoreLink{
+    position: absolute;
+    left: 90%;
+    top: 5%;
+    text-decoration: none;
+    color: #fff;
+    border: none;
+    outline: none;
+    background-color: #3f0202;
+    padding: 15px 5px;
+    border-radius: 10px;
+    transition: background-color 0.5s linear;  
+}
+
+.seeMoreLink:hover{
+    background-color: transparent;
+}
+
+
+
+
+.gameDiv h1{
+    margin: 0.5em 0;
+}
+
+
+.gameScroll{
+    width: 100%;
+    display: flex;
+    overflow-x: scroll;
+
+}
+
 .GameCard{
     margin: 0 1em;
+    background-color: #0000004d;
 }
 
 .GameDescription{
@@ -224,6 +284,11 @@
 }
 
 
+.price{
+    color: green;
+}
+
+
 .reactions:hover{
     transform: scale(1.2);
 }
@@ -246,7 +311,7 @@
 
 
 
-.imgCont img{
+.imgCont{
     width: 300px;
     height: 300px;
     border-radius: 15px 15px 0 0;
@@ -274,6 +339,62 @@
     outline: none;
     border-radius: 20px;
     background-color : transparent
+}
+
+
+
+footer{
+    min-height: 500px;
+    width: 100%;
+    background-color: #292424;
+    color: #a19595;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.footerContent{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.slogan{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    text-align: center;
+}
+
+.slogan h1{
+    font-family: BoldHead, Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 4em;
+}
+
+
+.socialLink{
+    width: 35px;
+    height: 35px;
+}
+
+.socialLink + .socialLink{
+    margin-left: 1em;
+}
+
+
+.list ul{
+    list-style-type: none;
+}
+
+.list li{
+    margin: 0.5em 0;
+}
+
+.list p{
+    font-weight: bold;
+    font-size: 1.5em;
 }
 
 
