@@ -1,6 +1,6 @@
 
 
-import checkout from "../assets/icons/checkout.png";
+import checkout from "../assets/icons/checklist.png";
 import { Link } from "react-router-dom";
 
 export default function Navbar(){
