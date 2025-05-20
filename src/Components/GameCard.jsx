@@ -1,6 +1,6 @@
 
 
-
+import { Link } from "react-router-dom";
 
 export default function GameCard({game}){
 
@@ -42,7 +42,7 @@ export default function GameCard({game}){
     }
 
     let imgContStyle = {background : "linear-gradient(to top, #000, transparent), center/cover no-repeat url(" + game.background_image + ")"}
-    return <div className="GameCard">
+    return <Link to={String(game.id)} className="gameLink"><div className="GameCard">
                <div className="imgCont" style={imgContStyle}>
                 <div className="reactions" onClick={increaseAdd}>
                 <p className={"star" + game.id}>{game.added}</p>
@@ -54,11 +54,12 @@ export default function GameCard({game}){
                </div>
                 <div className="GameDescription">
                         <h2 className="gameName">{game.name}</h2>
-                        <p>Released: {game.released}</p>
+                        <p><b>Release Date:</b> {game.released}</p>
                         <p className="price">{price.toFixed(2)}$</p>
                         <div className="gameGenre">
                             {game.genres.map((genre)=> <div key={genre.id} className="genre">{genre.name}</div>)}
                         </div>
                 </div>
             </div>
+            </Link>
 }
