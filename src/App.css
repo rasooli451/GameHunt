@@ -13,6 +13,12 @@
     src: url("./assets/Orbitron-Regular.ttf");
 }
 
+
+@font-face {
+    font-family: proximaNova;
+    src: url("./assets/ProximaNova-Regular.otf");
+}
+
 .navBarCont{
     width: 100%;
     padding: 0.5em;
@@ -46,6 +52,11 @@
 }
 
 
+.orbitron{
+    font-family: orbitron, Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
 .humberger:hover{
     transform: scale(1.2);
 }
@@ -75,33 +86,38 @@
     position: absolute;
     left: 0;
     background-color: #000;
-    bottom: -1000%;
+    bottom: -1400%;
     width: min(200px, 40vw);
     transform-origin: top;
     transform: scaleY(0);
+    z-index: 2;
 }
 
 .genres li{
     width: 100%;
     text-align: center;
-    background-color: #000;
+    background-color :#081131;
     padding: 0.5em;
     font-size: 1.3em;
     color: #Fff;
     cursor: pointer;
 }
 
+.genres a{
+    text-decoration: none;
+}
+
 .genres li:hover{
-    background-color: #353434;
+    background-color:#7f9bff;
 }
 
 .appear{
     animation: appear 0.8s ease forwards;
 }
 
-/*.disappear{
-    animation: disappear 0.8s ease forwards;
-}*/
+.disappear{
+    animation: disappear 0.2s ease forwards;
+}
 
 
 
@@ -217,14 +233,14 @@
     color: #fff;
     border: none;
     outline: none;
-    background-color: #3f0202;
+    background-color: transparent;
     padding: 15px 5px;
     border-radius: 10px;
     transition: background-color 0.5s linear;  
 }
 
 .seeMoreLink:hover{
-    background-color: transparent;
+    background-color: #3f0202;
 }
 
 .gameLink{
@@ -232,7 +248,10 @@
     color: #fff;
 }
 
-
+.navBarCont a{
+    text-decoration: none;
+    color: #fff;
+}
 .gameDiv h1{
     margin: 0.5em 0;
 }
@@ -242,16 +261,14 @@
     width: 100%;
     display: flex;
     overflow-x: scroll;
+    gap: 1em;
     scrollbar-color: #272424 #000;
     overflow-y: hidden;
 
 }
 
 .GameCard{
-    margin: 0 1em;
-    background-color: #000;
-    transition: transform 0.5s linear;
-    border-radius: 15px 15px 0 0;
+    border-radius: 15px;
 }
 
 .GameCard:hover{
@@ -290,12 +307,13 @@
 .metacritic{
     position: absolute;
     width: 35px;
-    height: 16px;
+    height: 17px;
     right: 15px;
     bottom: 30px;
     color: #000;
     text-align: center;
     border-radius: 5px;
+    font-family: proximaNova, sans-serif;
 }
 
 
@@ -339,6 +357,7 @@
 .GameDescription{
     text-align: center;
     width: 100%;
+    padding: 12px;
 }
 
 
@@ -431,32 +450,13 @@ footer{
     background-color: #6884dd, linear-gradient(to bottom, #7f9bff, #6884dd);
     padding: 2em;
     box-shadow: 0 0 8px #6884dd, 0 0 16px #6884dd80, 0 0 32px #6884dd40;
-    position: relative;
-    transition: box-shadow 0.3s ease;
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
 }
 
 
-.gameDetails::after {
-  content: "";
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  border-radius: 12px;
-  background: linear-gradient(45deg, #6884dd, #00f0ff);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: -1;
-}
-
-.gameDetails:hover::after {
-  opacity: 1;
-}
 
 .gameDetails:hover {
-  box-shadow: 0 0 12px #6884dd, 0 0 24px #6884dd80, 0 0 48px #6884dd40;
-  transform: translateY(-4px); /* subtle lift */
+  box-shadow: 0 0 15px #6884dd, 0 0 28px #6884dd80, 0 0 52px #6884dd40;
 }
 
 
@@ -469,7 +469,7 @@ footer{
 .details{
     width: 100%;
     display: flex;
-    gap: 1em;
+    gap: 1.5em;
 }
 .gameDetail{
     display: flex;
@@ -485,34 +485,214 @@ footer{
     flex-basis: 550px;
     height: 550px;
     flex-shrink: 0;
+    position: relative;
 }
 
+
+.bigMetacritic{
+    width: 50px;
+    height: 25px;
+    top: 2%;
+    left: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-family: proximaNova, sans-serif;
+}
 
 .gameDescription{
     display: flex;
     flex-direction: column;
+    max-width: 100%;
     gap: 1em;
 }
 
 
 
 .description{
-    margin-bottom: 2.5em;
+    margin-bottom: 1em;
     line-height: 20px;
 }
 
+
+
+.gameDetail{
+    font-size: 1.2em;
+}
 
 .gameDetail img{
     width: 20px;
     height: 20px;
 }
 
+.addSection{
+    position: absolute;
+    width: 35%;
+    bottom: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.increase, .decrease{
+    padding: 2px 20px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    font-size: 1.3em;
+    background: #6884dd;
+}
+
+
+.increase:hover, .decrease:hover{
+    transform: scale(1.2);
+}
+
+.addToCart{
+    position: absolute;
+    bottom: 3%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 5px 17px;
+    border: none;
+    outline: none;
+    background: #6884dd;
+    border-radius: 7px;
+}
+
+
+.addToCart:hover{
+    box-shadow: 0 0 8px #6884dd, 0 0 16px #6884dd80, 0 0 32px #6884dd40;
+}
+
+button:disabled:hover{
+    cursor: not-allowed;
+}
+
+
+
+.count{
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2c2f4a;
+    border-radius: 10px;
+
+}
+
+
+.nextImg, .prevImg{
+    position: absolute;
+    top: 50%;
+    background-color: #6884dd;
+    padding: 5px 10px;
+    border: none;
+    outline: none;
+}
+
+.nextImg{
+    right: 3%;
+}
+
+
+.prevImg{
+    left: 3%;
+}
+
+
+.nextImg:hover, .prevImg:hover{
+    transform: scale(1.2);
+}
+
+
+
+.searchResults{
+    background-color: #000;
+    color: #fff;
+    width: 100%;
+    padding: 5em 0;
+    min-height: 100vh;
+    position: relative;
+}
+
+
+.results{
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 1.5em;
+    flex-wrap: wrap;
+}
+
+
+.results .imgCont{
+    width: 400px;
+    height: 400px;
+}
+
+
+.results .GameCard{
+    background-color: #003333;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.1), 0 4px 12px rgba(0, 0, 0, 0.7);
+}
+
+.results .GameDescription{
+    max-width: 400px;
+}
+
+.pagebtns{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+
+.pagebtns button{
+    padding: 5px 15px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    background-color: #081131;
+    color: #fff;
+    transition: background-color 0.5s ease;
+}
+
+.prevPage{
+    margin-right: 30px;
+}
+
+.nextPage{
+    margin-left: 30px;
+}
+
+.nextPage:hover, .prevPage:hover{
+    background-color: #6884dd;
+}
+
+.loading{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+
 @keyframes appear {
     0%{
         transform: scaleY(0);
     }
-    60%{
-        transform: scaleY(120%);
+    50%{
+        transform: scaleY(105%);
     }
     100%{
         transform: scaleY(100%);
