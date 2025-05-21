@@ -23,14 +23,21 @@ export default function Home(){
         then(function(response){
             setTop100(response);
         })
-        let year = new Date().getFullYear() - 1;
-        fetch("https://api.rawg.io/api/games?key=d2cfad0807004f5c9a25a4ea2fcea8c6&dates=" + year + "-01-01," + year + "-12-31&ordering=-added&page=1&page_size=10").
+        let date = new Date();
+        let lastyear = date.getFullYear() - 1;
+        let currentMonth = date.getMonth();
+        let from = lastyear + "-01-01";
+        let to = lastyear + "-12-31";
+        if (currentMonth > 1){
+            from = date.getFullYear() + "-01-01";
+            to = date.getFullYear() + "-" + (date.getMonth() < 10 ? "0" + date.getMonth() : date.getMonth()) + "-" + (date.getDate() < 10 ? "0" + date.getDate() : date.getDate());
+        }
+        fetch("https://api.rawg.io/api/games?key=d2cfad0807004f5c9a25a4ea2fcea8c6&dates=" + from + "," + to + "&ordering=-added&page=1&page_size=10").
         then((response) => response.json()).
         then(function(response){
             setPopular(response);
         })
     }, [])
-
     let homepageStyle = {background : "linear-gradient(to top, #000, transparent, #000), center/cover no-repeat url(" + background + ")"}
     return <div className="homePage">
         <div className="welcomeSection" style={homepageStyle}>
@@ -42,8 +49,8 @@ export default function Home(){
         </div>
         <div className="Top100">
             <div className="gameDiv">
-                <h1>Top 100</h1>
-                <Link to="search"><button className="seeMoreLink">See More</button></Link>
+                <h1 className="orbitron">Top 100</h1>
+                <Link to="/search/ordering=-metacritic"><button className="seeMoreLink">See More</button></Link>
                 <div className="gameScroll">
             {
                 top100 === null ? "Loading" : top100.results.map(function(entry){
@@ -57,8 +64,8 @@ export default function Home(){
         </div>
         <div className="popularLastYear">
             <div className="gameDiv">
-                <h1>Popular recently</h1>
-                <Link to="search"><button className="seeMoreLink">See More</button></Link>
+                <h1 className="orbitron">Popular recently</h1>
+                <Link to="search/dates"><button className="seeMoreLink">See More</button></Link>
                 <div className="gameScroll">
             {
                 popular === null ? "Loading" : popular.results.map(function(entry){
