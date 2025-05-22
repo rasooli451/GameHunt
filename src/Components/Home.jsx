@@ -50,7 +50,7 @@ export default function Home(){
         <div className="Top100">
             <div className="gameDiv">
                 <h1 className="orbitron">Top 100</h1>
-                <Link to="/search/ordering=-metacritic"><button className="seeMoreLink">See More</button></Link>
+                <Link to="/search/metacritic"><button className="seeMoreLink">See More</button></Link>
                 <div className="gameScroll">
             {
                 top100 === null ? "Loading" : top100.results.map(function(entry){
@@ -91,7 +91,8 @@ export default function Home(){
                     <p>Built using <a href="https://rawg.io/apidocs">RAWG Gaming API</a></p>
                     <p>Icons used from <a href="https://www.flaticon.com/free-icons/purchase">Flaticon</a></p>
                 </div>
-                <div className="list">
+                <div className="garbage">
+                    <div className="list">
                 <p>Company</p>
                 <ul>
                    <li>About</li>
@@ -118,6 +119,7 @@ export default function Home(){
                    <li>Payments</li> 
                 </ul>
             </div>
+                </div>
             </div>
         </footer>
 
