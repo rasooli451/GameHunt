@@ -208,8 +208,13 @@
     color: #fff;
     text-align: center;
 }
+
+.welcome{
+    width: 90%;
+}
+
 .welcome h1{
-    font-size: 5em;
+    font-size: max(50px, 8vw);
 }
 
 .Top100, .popularLastYear{
@@ -236,7 +241,6 @@
     background-color: transparent;
     padding: 15px 5px;
     border-radius: 10px;
-    transition: background-color 0.5s linear;  
 }
 
 .seeMoreLink:hover{
@@ -388,14 +392,22 @@ footer{
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 2em;
 }
 
 
 .footerContent{
     width: 90%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    gap: 5em;
     align-items: center;
+}
+
+
+.garbage{
+    display: flex;
+    gap: 4em;
 }
 
 .slogan{
@@ -407,7 +419,7 @@ footer{
 
 .slogan h1{
     font-family: BoldHead, Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 4em;
+    font-size: min(50px, 7vw);
 }
 
 
@@ -421,12 +433,16 @@ footer{
 }
 
 
+.list{
+    text-align: center;
+}
+
 .list ul{
     list-style-type: none;
 }
 
 .list li{
-    margin: 0.5em 0;
+    margin: 1em 0;
 }
 
 .list p{
@@ -617,12 +633,39 @@ button:disabled:hover{
     padding: 5em 0;
     min-height: 100vh;
     position: relative;
+    display: flex;
+    gap: 2em;
+    justify-content: space-around;
+}
+
+.resultSection{
+    width: 80%;
+}
+
+.filters{
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 1.3em;
+    font-size: 1em;
+    align-self: flex-start;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+
+.filterOption input{
+    margin-right: 15px;
+}
+
+.filterOption{
+    margin-left: 15px;
 }
 
 
 .results{
-    width: 90%;
-    margin: 0 auto;
+    width: 100%;
+    margin-top: 2em;
     display: flex;
     justify-content: center;
     gap: 1.5em;
@@ -707,4 +750,14 @@ button:disabled:hover{
     100%{
         transform: scaleY(0);
     }
+}
+
+
+
+
+@media (max-width : 1300px) {
+    .footerContent{
+        flex-direction: column;
+    }
+    
 }
