@@ -7,9 +7,7 @@ export default function SearchResult(){
     const [pageIndex, setPageIndex] = useState(1);
     const [collection, setCollection] = useState(null);
     const {searchterm} = useParams();
-    const [filters, setFilters] = useState(searchterm.includes("metacritic") || searchterm.includes("dates") || searchterm.includes("typed=") ? [] : [searchterm]);
-    const [filterOn, setFilterOn] = useState(false);
-    const [filtered, setFiltered] = useState([]);
+    const [query, setQuery] = useState("");
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
     let genre = document.querySelector("#" + searchterm);
@@ -31,80 +29,48 @@ export default function SearchResult(){
                 to = date.getFullYear() + "-" + (date.getMonth() < 10 ? "0" + date.getMonth() : date.getMonth()) + "-" + (date.getDate() < 10 ? "0" + date.getDate() : date.getDate());
             }
         }
-        fetch("https://api.rawg.io/api/games?key=d2cfad0807004f5c9a25a4ea2fcea8c6&" + (searchterm == "metacritic" ? "ordering=-metacritic" : searchterm.includes("dates") ? "dates=" + from + "," + to : searchterm.includes("typed=") ? "search=" + searchterm.split("=")[1] : "genres=" + searchterm) + "&page=" + pageIndex + "&page_size=40")
+        let genres = query.split(",");
+        let result = "";
+        for (let i = 1; i < genres.length; i++){
+            result += "&genres=" + genres[i];
+        }
+        fetch("https://api.rawg.io/api/games?key=d2cfad0807004f5c9a25a4ea2fcea8c6&" + (searchterm == "metacritic" ? "ordering=-metacritic" + result : searchterm.includes("dates") ? "dates=" + from + "," + to + result  : searchterm.includes("typed=") ? "search=" + searchterm.split("=")[1] + result : "genres=" + searchterm + result) + "&page=" + pageIndex + "&page_size=40")
         .then((response)=> response.json()).
         then(function(response){
             setCollection(response);
-            setFiltered(response.results);
         })
-        if (searchterm.includes("metacritic") || searchterm.includes("dates") || searchterm.includes("typed=")){
-            if (filters.length == 0){
-                setFilterOn(false);
-            }
-        }
-        else{
-            if (filters.length <= 1){
-             setFilterOn(false);
-             if (filters.length == 1){
-                let genre = document.querySelector("#" + filters[0]);
-                genre.checked = false;
-                genre.disabled = false;
-             }
-             setFilters([searchterm]);
-        }
-        }
     }
-    , [pageIndex,searchterm])
+    , [pageIndex,searchterm, query])
 
-    useEffect(()=>{
-        if (filterOn){
-            if (filtered.length == collection.results.length){
-                setFiltered((prev)=> prev.filter(function(game) {
-                    let genres = game.genres.map((genre)=> genre.slug);
-                    for (let i = 0; i < filters.length; i++){
-                        if (!genres.includes(filters[i])){
-                            return false;
-                        }
-                    }
-                    return true;
-                }))
-            }
-            else{
-                setFiltered((prev)=> prev.filter(function(game){
-                    let genres = game.genres.map((genre) => genre.slug);
-                    if (genres.includes(filters[filters.length - 1])){
-                        return true;
-                    }
-                    return false;
-                }))
-            }
-        }
-    }, [filters, collection])
 
     
 
 
     function handleFilter(e){
+        let temp = query;
         if (e.target.checked){
-            if (filters.length == 1 || filters.length == 0){
-                setFilterOn(true);
-            }
-            setFilters((prev) => [...prev, e.target.value]);
-        }
-        else{
-            let min = 0;
-            if (searchterm.includes("metacritic") || searchterm.includes("dates") || searchterm.includes("typed=")){
-                min = 1;
+            if (temp.length > 0){
+                temp += "," + e.target.value;
             }
             else{
-                min = 2;
+                temp += "," + e.target.value;
             }
-            if (filters.length == min){
-                setFilterOn(false);
-            }
-            setFiltered(collection.results);
-            setFilters((prev) => prev.filter((item) => item != e.target.value));
         }
+        else{
+            let genres = temp.split(",");
+            if (searchterm.includes("metacritic") || searchterm.includes("dates") || searchterm.includes("typed=")){
+                if (genres.indexOf(e.target.value) != -1){
+                    let index = genres.indexOf(e.target.value);
+                    genres.splice(index, 1);
+                }
+            }
+            else{
+                let index = genres.indexOf(e.target.value);
+                genres.splice(index, 1);
+            }
+            temp = genres.join(",");
+        }
+        setQuery(temp);
     }
 
     function increasePage(){
@@ -227,7 +193,7 @@ export default function SearchResult(){
                 <hr />
                 <div className="results">
                     {
-                   collection == null || collection == undefined ? <h1 className="loading">Loading...</h1> : filterOn ? filtered.length > 0 ? filtered.map((entry) => <GameCard game={entry} key={entry.id}/>): <h1 className="loading">No games found in this Page, try Next Page!</h1> : collection.results.map((entry) => <GameCard game={entry} key={entry.id}/>)
+                   collection == null || collection == undefined ? <h1 className="loading">Loading...</h1> : collection.results.map((entry) => <GameCard game={entry} key={entry.id}/>)
                     }
                 </div>
                </div>
