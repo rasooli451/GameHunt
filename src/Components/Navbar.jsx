@@ -18,7 +18,6 @@ export default function Navbar(){
             genres.classList.add("disappear");
         }
     }
-
     function handleType(e){
         setTyped(e.target.value);
     }
