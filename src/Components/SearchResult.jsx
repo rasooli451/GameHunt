@@ -10,10 +10,12 @@ export default function SearchResult(){
     const [query, setQuery] = useState("");
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
-    let genre = document.querySelector("#" + searchterm);
-    if (genre != null){
-        genre.checked = true;
-        genre.disabled = true;
+    if (!(searchterm.includes("metacritic") || searchterm.includes("dates") || searchterm.includes("typed="))){
+        let genre = document.querySelector("#" + searchterm);
+        if (genre != null){
+           genre.checked = true;
+           genre.disabled = true;
+        }
     }
     useEffect(()=>{
         let from = "";
@@ -31,10 +33,16 @@ export default function SearchResult(){
         }
         let genres = query.split(",");
         let result = "";
+        let order = "";
         for (let i = 1; i < genres.length; i++){
-            result += "&genres=" + genres[i];
+            if (genres[i] == "metacritic" || genres[i] == "added"){
+                order += "&ordering=-" + genres[i];
+            }
+            else{
+                result += "&genres=" + genres[i];
+            }
         }
-        fetch("https://api.rawg.io/api/games?key=d2cfad0807004f5c9a25a4ea2fcea8c6&" + (searchterm == "metacritic" ? "ordering=-metacritic" + result : searchterm.includes("dates") ? "dates=" + from + "," + to + result  : searchterm.includes("typed=") ? "search=" + searchterm.split("=")[1] + result : "genres=" + searchterm + result) + "&page=" + pageIndex + "&page_size=40")
+        fetch("https://api.rawg.io/api/games?key=d2cfad0807004f5c9a25a4ea2fcea8c6&" + (searchterm == "metacritic" ? "ordering=-metacritic" + result + order: searchterm.includes("dates") ? "dates=" + from + "," + to + result + order: searchterm.includes("typed=") ? "search=" + searchterm.split("=")[1] + result + order : "genres=" + searchterm + result + order) + "&page=" + pageIndex + "&page_size=40")
         .then((response)=> response.json()).
         then(function(response){
             setCollection(response);
@@ -98,6 +106,30 @@ export default function SearchResult(){
             }
             setPageIndex(prev - 1);
         })
+    }
+
+    function handleOrder(e){
+        let temp = query;
+        let opposite = "";
+        if (e.target.value == "metacritic"){
+            if (!searchterm.includes("metacritic")){
+                temp += "," + e.target.value;
+            }
+            opposite = "added";
+        }
+        else{
+            if (searchterm.includes("metacritic")){
+                temp += "," + e.target.value;
+            }
+            opposite = "metacritic";
+        }
+        let genres = temp.split(",");
+        let index = genres.indexOf(opposite);
+        if (index != -1)
+            genres.splice(index, 1);
+        temp = genres.join(",");
+        setQuery(temp);
+
     }
     return <div className="searchResults">
             <div className="filters">
@@ -180,10 +212,9 @@ export default function SearchResult(){
                 </div>
                 <h3 className="orbitron">Order by: </h3>
                 <div className="filterOption">
-                    <select name="order" id="order">
-                        <option value="noOption">Select an option</option>
-                        <option value="Rating">Rating</option>
-                        <option value="Sells">Sells</option>
+                    <select name="order" id="order" onChange={handleOrder}>
+                        <option value="metacritic" selected={searchterm.includes("metacritic")}>Rating</option>
+                        <option value="added" selected={!searchterm.includes("metacritic")}>Popularity</option>
                     </select>
                 </div>
                 
