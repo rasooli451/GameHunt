@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 export default function GameCard({game}){
 
     function increaseAdd(event){
+        event.preventDefault();
         event.stopPropagation();
         let p = document.querySelector(".star" + game.id);
         let star = document.querySelector(".star" + game.id + " + div");
