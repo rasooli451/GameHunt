@@ -658,8 +658,93 @@ button:disabled:hover{
     margin-right: 15px;
 }
 
+.filterOption input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  background-color: #111;
+  border: 2px solid #444;
+  border-radius: 4px;
+  position: relative;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+
+.filterOption input[type="checkbox"]::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+
+.filterOption input[type="checkbox"]:checked {
+  background-color: #00b3b3;
+  border-color: #00b3b3;
+}
+
+/* Show the checkmark */
+.filterOption input[type="checkbox"]:checked::after {
+  opacity: 1;
+}
+
+/* Hover effect */
+.filterOption input[type="checkbox"]:hover {
+  border-color: #00cccc;
+}
+
+/* Label styling */
+.filterOption label {
+  cursor: pointer;
+  user-select: none;
+}
+
+
 .filterOption{
     margin-left: 15px;
+}
+
+
+
+.filterOption select {
+  background-color: #111;         /* Matches dark theme */
+  color: #ccc;                    /* Light text for readability */
+  border: 2px solid #444;         /* Soft border */
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 16px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  transition: border 0.2s ease, background-color 0.2s ease;
+  width: 100%; /* Optional: full width of container */
+}
+
+
+/* Hover/focus styles */
+.filterOption select:hover,
+.filterOption select:focus {
+  border-color: #00b3b3;
+  background-color: #1a1a1a;
+  outline: none;
+}
+
+.filterOption select {
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%23ccc' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  padding-right: 36px;
 }
 
 
@@ -726,7 +811,12 @@ button:disabled:hover{
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+}
 
+
+
+#order{
+    background-color: ;
 }
 
 
