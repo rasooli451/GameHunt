@@ -3,7 +3,6 @@
 
 import { useEffect , useState} from "react";
 import { Link, NavLink } from "react-router-dom";
-import { Outlet } from "react-router-dom";
 import facebook from "../assets/icons/facebook.svg";
 import instagram from "../assets/icons/instagram.svg";
 import twitter from "../assets/icons/twitter.svg";
