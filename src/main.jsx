@@ -8,7 +8,11 @@ import Search from './Components/Search.jsx'
 import SearchResult from './Components/SearchResult.jsx'
 import GameDetails , {gameDetailsLoader} from './Components/GameDetails.jsx'
 import Product from './Components/Product.jsx'
-import { RouterProvider, createBrowserRouter , createRoutesFromElements} from 'react-router-dom'
+import { RouterProvider, createBrowserRouter} from 'react-router-dom'
+
+
+
+
 
 
 const router = createBrowserRouter([{
