@@ -5,7 +5,9 @@ import { useEffect , useState} from "react";
 import { Link} from "react-router-dom";
 import background from "../assets/backgrounds/HomepageBG.jpg";
 
-import GameCard from "./gameCard";
+import GameCard from "./GameCard";
+
+
 
 
 
