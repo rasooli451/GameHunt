@@ -2,10 +2,11 @@
 
 
 
-import { Outlet } from "react-router-dom";
+import { Outlet, useOutletContext } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 
 export default function Product(){
-    return <Outlet />
+    const addToCart = useOutletContext();
+    return <Outlet  context={addToCart}/>
 }
