@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-import GameCard from "./gameCard";
+import GameCard from "./GameCard";
 import { useParams } from "react-router-dom";
 
 export default function SearchResult(){
