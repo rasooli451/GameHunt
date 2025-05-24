@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import { useLoaderData, useParams, useSearchParams } from "react-router-dom"
+import { useLoaderData, useLocation, useOutletContext, useParams, useSearchParams } from "react-router-dom"
 import releaseIcon from "../assets/icons/clock.png"
 import developersIcon from "../assets/icons/coding.png"
 import platformsIcon from "../assets/icons/device.png"
@@ -20,9 +20,10 @@ export default function GameDetails(){
     const [count, setCount] = useState(0);
     const data = useLoaderData();
     const game = data.game;
+    const contextObj = useOutletContext();
     let screens = data.screenshots.results.map((object) => object.image);
     let slideShow = [game.background_image, game.background_image_additional].concat(screens);
-    let style = {background : "linear-gradient(to top, #000, transparent), center/cover no-repeat url(" + slideShow[index] + ")"};
+
     function genreateString(array, isplatform){
         if (array.length > 0){
             let result = isplatform ? array[0].platform.name : array[0].name;
@@ -79,6 +80,8 @@ export default function GameDetails(){
             setState(prev - 1);
         })
     }
+
+
     let platforms = genreateString(game.platforms, true);
     let developers = genreateString(game.developers, false);
     let genres = genreateString(game.genres, false);
@@ -87,11 +90,18 @@ export default function GameDetails(){
     let metacriticColor = game.rating >= 4 ? {backgroundColor : "#66CC33"} : game.rating >= 3 ? {backgroundColor : "#FFCC33"} : {backgroundColor : "#FF0000"};
     if (game.metacritic != null)
         metacriticColor = game.metacritic >= 80 ? {backgroundColor : "#66CC33"} : game.metacritic >= 65 ? {backgroundColor : "#FFCC33"} : {backgroundColor : "#FF0000"};
+
+
+    function Buy(){
+        if (count > 0)
+             contextObj.addfunc({id : game.id, details : game, price : price.toFixed(2), count : count, fromCheckout : false})
+    }
     return <div className="gamePage">
         <div className="gameDetails">
             <h1>{game.name}</h1>
             <div className="details">
-                <div className="imgContainer" style={style}>
+                <div className="imgContainer">
+                    <img src={slideShow[index]} className="gameImage"/> 
                     <button className="nextImg" onClick={()=> handleIncrease(index, setIndex, "prevImg")}>&#10095;</button>
                     <button className="prevImg" onClick={()=> handleDecrease(index, setIndex, "prevImg")} disabled={index == 0 ? true : false}>&#10094;</button>
                     <div className="metacritic bigMetacritic" style={metacriticColor}>
@@ -102,7 +112,7 @@ export default function GameDetails(){
                         <div className="count"><p>{count}</p></div>
                         <button className="increase" onClick={()=> handleIncrease(count, setCount, "decrease")}>+</button>
                     </div>
-                    <button className="addToCart">Add To Cart</button>
+                    <button className="addToCart" onClick={Buy}>Add To Cart</button>
                </div>
             <div className="gameDescription">
                 <h2>Game Details</h2>
