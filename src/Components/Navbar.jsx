@@ -4,9 +4,18 @@ import { useState } from "react";
 import checkout from "../assets/icons/checklist.png";
 import { Link } from "react-router-dom";
 
-export default function Navbar(){
+export default function Navbar({number}){
 
     const [typed, setTyped] = useState("");
+    let element = document.querySelector(".notification");
+    if (element != null){
+        if (number > 0){
+        element.classList.add("popUp");
+    }
+    else{
+        element.classList.remove("popUp");
+    }
+    }
     function dropdownAnimation(){
         let genres = document.querySelector(".genres");
         if (!genres.classList.contains("appear")){
@@ -43,16 +52,18 @@ export default function Navbar(){
                     <Link to="/search/educational"><li>Educational</li></Link>
                     <Link to="/search/sports"><li>Sports</li></Link>
             </ul>
-        <div className="humberger" onClick={dropdownAnimation}>
-            <span className="bar"></span>
-        </div>
+            <div className="logoCont">
+                <div className="humberger" onClick={dropdownAnimation}>
+                  <span className="bar"></span>
+                </div>
+                <Link to={"/"}><h3 className="name">GameHunt</h3></Link>
+            </div>
            <nav className="navbar">
-               <Link to={"/"}><h3 className="name">GameHunt</h3></Link>
                <div className="searchDiv">
                 <input type="text" placeholder="Search..." value={typed} onChange={handleType}/>
                 <Link to={"/search/typed=" + typed}><button className="searchBtn">Search</button></Link>
                </div>
-               <Link to="checkout"><img className="checkoutLogo" src={checkout} alt="checkout"/></Link>
+               <Link to="checkout"><div className="checkoutLogoCont"><div className="notification">{number > 0 ? number : null}</div><img className="checkoutLogo" src={checkout} alt="checkout"/></div></Link>
            </nav>
          </header>
 }
