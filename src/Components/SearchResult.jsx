@@ -224,7 +224,7 @@ export default function SearchResult(){
                 <hr />
                 <div className="results">
                     {
-                   collection == null || collection == undefined ? <h1 className="loading">Loading...</h1> : collection.results.map((entry) => <GameCard game={entry} key={entry.id}/>)
+                   collection == null || collection == undefined ? <h1 className="loading">Loading...</h1> : collection.results.map((entry) => <GameCard  game={entry} key={entry.id}/>)
                     }
                 </div>
                </div>
