@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useOutletContext} from "react-router-dom";
-
+import "./Checkout.css";
 
 
 export default function Checkout(){
@@ -8,6 +8,7 @@ export default function Checkout(){
     const addtoCart = useOutletContext().addfunc;
     const removeFromCart = useOutletContext().removefunc;
     const [total, setTotal] = useState(calculatePrice());
+
 
     function calculatePrice(){
         let total = 0;

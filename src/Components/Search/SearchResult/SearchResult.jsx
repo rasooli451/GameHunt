@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react"
 
-import GameCard from "./GameCard";
+import GameCard from "../../GameCard/GameCard";
 import { useParams } from "react-router-dom";
+import "./SearchResult.css";
 
 export default function SearchResult(){
     const [pageIndex, setPageIndex] = useState(1);
     const [collection, setCollection] = useState(null);
     const {searchterm} = useParams();
+    const [loading, setLoading] = useState(true);
     const [query, setQuery] = useState("");
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
@@ -35,18 +37,19 @@ export default function SearchResult(){
         let result = "";
         let order = "";
         for (let i = 1; i < genres.length; i++){
-            if (genres[i] == "metacritic" || genres[i] == "added"){
+            if (genres[i] == "metacritic" || genres[i] == "added" || genres[i] == "rating"){
                 order += "&ordering=-" + genres[i];
             }
             else{
                 result += "&genres=" + genres[i];
             }
         }
+        setLoading(true);
         fetch("https://api.rawg.io/api/games?key=d2cfad0807004f5c9a25a4ea2fcea8c6&" + (searchterm == "metacritic" ? "ordering=-metacritic" + result + order: searchterm.includes("dates") ? "dates=" + from + "," + to + result + order: searchterm.includes("typed=") ? "search=" + searchterm.split("=")[1] + result + order : "genres=" + searchterm + result + order) + "&page=" + pageIndex + "&page_size=40")
         .then((response)=> response.json()).
         then(function(response){
             setCollection(response);
-        })
+        }).finally(()=> setLoading(false));
     }
     , [pageIndex,searchterm, query])
 
@@ -113,15 +116,23 @@ export default function SearchResult(){
         let opposite = "";
         if (e.target.value == "metacritic"){
             if (!searchterm.includes("metacritic")){
-                temp += "," + e.target.value;
+                if (searchterm.includes("dates")){
+                    temp += "," + "rating";
+                }
+                else{
+                    temp += "," + e.target.value;
+                }
             }
             opposite = "added";
         }
         else{
-            if (searchterm.includes("metacritic")){
+            if (searchterm.includes("metacritic") || searchterm.includes("typed=")){
                 temp += "," + e.target.value;
             }
-            opposite = "metacritic";
+            if (searchterm.includes("dates"))
+                opposite = "rating";
+            else
+                opposite = "metacritic";
         }
         let genres = temp.split(",");
         let index = genres.indexOf(opposite);
@@ -224,7 +235,7 @@ export default function SearchResult(){
                 <hr />
                 <div className="results">
                     {
-                   collection == null || collection == undefined ? <h1 className="loading">Loading...</h1> : collection.results.map((entry) => <GameCard  game={entry} key={entry.id}/>)
+                   loading ? <h1 className="loading">Loading...</h1> : collection.results.map((entry) => <GameCard  game={entry} key={entry.id}/>)
                     }
                 </div>
                </div>

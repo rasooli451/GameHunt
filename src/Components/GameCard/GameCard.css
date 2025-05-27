@@ -1,0 +1,145 @@
+
+
+
+@font-face {
+    font-family: orbitron;
+    src: url("../../assets/Orbitron-Regular.ttf");
+}
+
+
+@font-face {
+    font-family: proximaNova;
+    src: url("../../assets/ProximaNova-Regular.otf");
+}
+
+
+.orbitron{
+    font-family: orbitron, Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+
+.GameCard{
+    border-radius: 15px;
+}
+
+.GameCard:hover{
+    transform: scale(1.1);
+}
+
+.GameDescription{
+    width: 100%;
+}
+
+
+.results .GameCard{
+    width: min(400px, 50vw);
+    background-color: #003333;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.1), 0 4px 12px rgba(0, 0, 0, 0.7);
+}
+
+
+
+
+.results .GameDescription{
+    max-width: 400px;
+}
+
+
+
+.imgCont{
+    position: relative;
+}
+
+
+.reactions{
+    width: 60px;
+    height: 20px;
+    position: absolute;
+    bottom: 30px;
+    text-align: center;
+    border-radius: 30px;
+    left: 15px;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.7s linear;
+    cursor: pointer;
+}
+
+
+.metacritic{
+    position: absolute;
+    width: 35px;
+    height: 17px;
+    right: 15px;
+    bottom: 30px;
+    color: #000;
+    text-align: center;
+    border-radius: 5px;
+    font-family: proximaNova, sans-serif;
+}
+
+
+.price{
+    color: green;
+}
+
+
+.reactions:hover{
+    transform: scale(1.2);
+}
+
+
+.star {
+  width: 14px;  
+  aspect-ratio: 1;
+  background-color: #fff;
+  clip-path: polygon(50% 0,
+    calc(50%*(1 + sin(.4turn))) calc(50%*(1 - cos(.4turn))),
+    calc(50%*(1 - sin(.2turn))) calc(50%*(1 - cos(.2turn))),
+    calc(50%*(1 + sin(.2turn))) calc(50%*(1 - cos(.2turn))),
+    calc(50%*(1 - sin(.4turn))) calc(50%*(1 - cos(.4turn))) 
+   ); 
+  
+}
+
+
+.gameName{
+    font-family: orbitron, Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+.imgCont{
+    width: 300px;
+    height: 300px;
+    border-radius: 15px 15px 0 0;
+}
+
+
+
+.GameDescription{
+    text-align: center;
+    width: 100%;
+    padding: 12px;
+}
+
+
+.gameGenre{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+
+.genre{
+    padding: 10px;
+    border: none;
+    margin: 0 10px;
+    outline: none;
+    border-radius: 20px;
+    background-color : transparent
+}

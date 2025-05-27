@@ -1,0 +1,93 @@
+
+
+@font-face {
+    font-family: BoldHead;
+    src: url("../../assets/Boldhead.otf");
+}
+
+
+
+
+footer{
+    min-height: 500px;
+    width: 100%;
+    background-color: #292424;
+    color: #a19595;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2em;
+}
+
+
+.footerContent{
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+    gap: 5em;
+    align-items: center;
+}
+
+
+.garbage{
+    display: flex;
+    gap: 4em;
+    justify-content: space-between;
+}
+
+.slogan{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    text-align: center;
+}
+
+.slogan h1{
+    font-family: BoldHead, Verdana, Geneva, Tahoma, sans-serif;
+    font-size: min(50px, 7vw);
+}
+
+
+.socialLink{
+    width: 35px;
+    height: 35px;
+}
+
+.socialLink + .socialLink{
+    margin-left: 1em;
+}
+
+
+.list{
+    text-align: center;
+}
+
+.list ul{
+    list-style-type: none;
+}
+
+.list li{
+    margin: 1em 0;
+}
+
+.list p{
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+
+
+@media (max-width : 1300px) {
+    .footerContent{
+        flex-direction: column;
+    }
+}
+
+
+@media (max-width : 600px){
+    .garbage{
+        gap: 2em;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

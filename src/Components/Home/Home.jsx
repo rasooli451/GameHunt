@@ -3,9 +3,10 @@
 
 import { useEffect , useState} from "react";
 import { Link} from "react-router-dom";
-import background from "../assets/backgrounds/HomepageBG.jpg";
+import background from "../../assets/backgrounds/HomepageBG.jpg";
 
-import GameCard from "./GameCard";
+import GameCard from "../GameCard/GameCard";
+import "./Home.css";
 
 
 

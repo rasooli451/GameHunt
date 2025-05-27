@@ -1,11 +1,11 @@
 
 
-import facebook from "../assets/icons/facebook.svg";
-import instagram from "../assets/icons/instagram.svg";
-import twitter from "../assets/icons/twitter.svg";
-import whatsapp from "../assets/icons/whatsapp.svg";
+import facebook from "../../assets/icons/facebook.svg";
+import instagram from "../../assets/icons/instagram.svg";
+import twitter from "../../assets/icons/twitter.svg";
+import whatsapp from "../../assets/icons/whatsapp.svg";
 
-
+import "./Footer.css";
 
 
 export default function Footer(){

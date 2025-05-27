@@ -1,13 +1,13 @@
-import { useEffect } from "react";
-import { useState } from "react";
-import { useLoaderData, useLocation, useOutletContext, useParams, useSearchParams } from "react-router-dom"
-import releaseIcon from "../assets/icons/clock.png"
-import developersIcon from "../assets/icons/coding.png"
-import platformsIcon from "../assets/icons/device.png"
-import publisherIcon from "../assets/icons/publishing.png"
-import priceTagIcon from "../assets/icons/price-tag.png"
-import genresIcon from "../assets/icons/categorization.png"
 
+import { useEffect, useState } from "react";
+import { useLoaderData, useOutletContext} from "react-router-dom"
+import releaseIcon from "../../../assets/icons/clock.png"
+import developersIcon from "../../../assets/icons/coding.png"
+import platformsIcon from "../../../assets/icons/device.png"
+import publisherIcon from "../../../assets/icons/publishing.png"
+import priceTagIcon from "../../../assets/icons/price-tag.png"
+import genresIcon from "../../../assets/icons/categorization.png"
+import "./GameDetails.css";
 
 
 
@@ -24,6 +24,11 @@ export default function GameDetails(){
     let screens = data.screenshots.results.map((object) => object.image);
     let slideShow = [game.background_image, game.background_image_additional].concat(screens);
 
+
+    useEffect(()=>{
+        document.body.scrollTop = 5;
+        document.documentElement.scrollTop = 5;
+    }, [])
     function genreateString(array, isplatform){
         if (array.length > 0){
             let result = isplatform ? array[0].platform.name : array[0].name;
@@ -93,8 +98,16 @@ export default function GameDetails(){
 
 
     function Buy(){
-        if (count > 0)
-             contextObj.addfunc({id : game.id, details : game, price : price.toFixed(2), count : count, fromCheckout : false})
+        if (count > 0){
+            contextObj.addfunc({id : game.id, details : game, price : price.toFixed(2), count : count, fromCheckout : false})
+            let message = document.querySelector(".message");
+            message.style.left = 0;
+            setTimeout(()=>{
+                message.style.left = "-100%";
+            }
+                ,1500)
+        }
+             
     }
     return <div className="gamePage">
         <div className="gameDetails">
@@ -107,12 +120,6 @@ export default function GameDetails(){
                     <div className="metacritic bigMetacritic" style={metacriticColor}>
                     <p>{game.metacritic === null ? game.rating : game.metacritic}</p>
                     </div>
-                    <div className="addSection">
-                        <button className="decrease" onClick={()=> handleDecrease(count, setCount, "decrease")} disabled={count == 0 ? true : false}>-</button>
-                        <div className="count"><p>{count}</p></div>
-                        <button className="increase" onClick={()=> handleIncrease(count, setCount, "decrease")}>+</button>
-                    </div>
-                    <button className="addToCart" onClick={Buy}>Add To Cart</button>
                </div>
             <div className="gameDescription">
                 <h2>Game Details</h2>
@@ -141,6 +148,16 @@ export default function GameDetails(){
                     <img src={priceTagIcon} alt="priceTagIcon" />
                     <p className="price"><b>{price.toFixed(2)}$</b></p>
                 </div>
+            </div>
+            <div className="purchaseDiv">
+                <div className="addSection">
+                        <button className="decrease" onClick={()=> handleDecrease(count, setCount, "decrease")} disabled={count == 0 ? true : false}>-</button>
+                        <div className="count"><p>{count}</p></div>
+                        <button className="increase" onClick={()=> handleIncrease(count, setCount, "decrease")}>+</button>
+                    </div>
+                    <button className="addToCart" onClick={Buy}>
+                        <div className="message">Success!</div>
+                        Add To Cart</button>
             </div>
             </div>
         </div>

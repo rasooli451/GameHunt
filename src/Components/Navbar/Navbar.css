@@ -1,0 +1,260 @@
+
+
+
+@font-face {
+    font-family: BoldHead;
+    src: url("../../assets/Boldhead.otf");
+}
+
+
+
+
+
+
+
+.navBarCont{
+    width: 100%;
+    padding: 0.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid #3a3737;
+    position: relative;
+    background-color: #000;
+    color: #fff;
+    flex-wrap: wrap;
+}
+
+
+.navBarCont a{
+    text-decoration: none;
+    color: #fff;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1700px;
+    width: 80%;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+
+.logoCont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.humberger{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.5s linear;
+    margin-left: 15px;
+}
+
+
+
+.humberger:hover{
+    transform: scale(1.2);
+}
+
+
+.bar{
+    position: relative;
+    width: 85%;
+    height: 2px;
+    background-color: #fff;
+}
+
+.bar:before, .bar:after{
+    position: absolute;
+    content: "";
+    width: 80%;
+    height: 2px;
+    background-color: #fff;
+}
+
+.bar::before{
+    top: -10px;
+    left: 3px;
+}
+
+.genres{
+    position: absolute;
+    left: 0;
+    background-color: #000;
+    top: 100%;
+    width: min(200px, 40vw);
+    transform-origin: top;
+    transform: scaleY(0);
+    z-index: 2;
+}
+
+.genres li{
+    width: 100%;
+    text-align: center;
+    background-color :#081131;
+    padding: 0.5em;
+    font-size: 1.3em;
+    color: #Fff;
+    cursor: pointer;
+}
+
+.genres a{
+    text-decoration: none;
+}
+
+.genres li:hover{
+    background-color:#7f9bff;
+}
+
+.appear{
+    animation: appear 0.8s ease forwards;
+}
+
+.disappear{
+    animation: disappear 0.2s ease forwards;
+}
+
+
+
+
+.bar:after{
+    bottom: -10px;
+    left: 3px;
+}
+
+
+.name{
+    font-family: BoldHead, Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+.searchDiv{
+    width: max(90%, 100px);
+    display: flex;
+}
+
+
+.searchDiv input{
+    width: 90%;
+    margin-right: 15px;
+    padding: 10px;
+    border-radius: 20px;
+    border: 2px solid #534a4ab6;
+    outline: none;
+    color: #fff;
+    background: transparent;
+}
+
+
+.searchBtn{
+    border: none;
+    outline: none;
+    position: relative;
+    background-color: transparent;
+    color: #Fff;
+    cursor: pointer;
+    padding: 10px 15px;
+}
+
+
+
+.searchBtn::before{
+    position: absolute;
+    content: "";
+    height: 2px;
+    background-color: #fff;
+    width: 0;
+    top: -2px;
+    left: 0;
+    transition: width 0.5s linear;
+}
+
+.searchBtn::after{
+    position: absolute;
+    content: "";
+    height: 2px;
+    background-color: #fff;
+    width: 0;
+    bottom: -2px;
+    right: 0;
+    transition: width 0.5s linear;
+}
+
+.searchBtn:hover::before, .searchBtn:hover::after{
+    width: 100%;
+}
+
+
+.checkoutLogo{
+    width: 40px;
+    height: 40px;
+}
+
+
+
+.checkoutLogoCont{
+    position: relative;
+}
+
+.notification{
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    top: -10%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+    background-color:#08f5f5;
+    border-radius: 50%;
+}
+
+
+.popUp{
+    opacity: 1;
+}
+
+
+@keyframes appear {
+    0%{
+        transform: scaleY(0);
+    }
+    50%{
+        transform: scaleY(105%);
+    }
+    100%{
+        transform: scaleY(100%);
+    }
+}
+
+
+@keyframes disappear {
+    0%{
+        transform: scaleY(100%);
+    }
+    100%{
+        transform: scaleY(0);
+    }
+}
+
+
+@media (max-width : 976px) {
+    .navbar{
+        width: 95%;
+        flex-wrap: nowrap;
+    }
+}

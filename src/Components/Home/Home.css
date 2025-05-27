@@ -1,0 +1,75 @@
+
+
+
+
+
+
+.welcomeSection{
+    width: 100%;
+    min-height: 950px;
+    border-bottom: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+}
+
+.welcome{
+    width: 90%;
+}
+
+.welcome h1{
+    font-size: max(50px, 8vw);
+}
+
+.Top100, .popularLastYear{
+    background-color: #000;
+    color: #fff;
+}
+
+
+.gameDiv{
+    width: 90%;
+    margin: 0 auto;
+    padding: 1em;
+    position: relative;
+}
+
+.seeMoreLink{
+    position: absolute;
+    left: 85%;
+    top: 5%;
+    text-decoration: none;
+    color: #fff;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    padding: 15px 5px;
+    border-radius: 10px;
+}
+
+.seeMoreLink:hover{
+    background-color: #3f0202;
+}
+
+.gameLink{
+    text-decoration: none;
+    color: #fff;
+}
+
+
+.gameDiv h1{
+    margin: 0.5em 0;
+}
+
+
+.gameScroll{
+    width: 100%;
+    display: flex;
+    overflow-x: scroll;
+    gap: 1em;
+    scrollbar-color: #272424 #000;
+    overflow-y: hidden;
+
+}

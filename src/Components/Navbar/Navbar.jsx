@@ -1,7 +1,8 @@
 
 
 import { useState } from "react";
-import checkout from "../assets/icons/checklist.png";
+import checkout from "../../assets/icons/checklist.png";
+import "./Navbar.css";
 import { Link } from "react-router-dom";
 
 export default function Navbar({number}){
