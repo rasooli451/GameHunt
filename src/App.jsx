@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react'
-import { Link , NavLink} from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
-import './App.css'
-import Navbar from './Components/Navbar';
-import Footer from './Components/Footer';
+import Navbar from './Components/Navbar/Navbar';
+import Footer from './Components/Footer/Footer';
 
 export default function App() {
 
