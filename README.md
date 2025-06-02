@@ -1,12 +1,46 @@
-# React + Vite
+# 🎮 GameHunt
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+GameHunt is a responsive and modern single-page application that simulates a digital game storefront. Users can explore a wide range of games, filter by genre, rating, or popularity, and add games to their cart—mimicking a real e-commerce experience. While it's a mock store, the frontend functionality is fully implemented to provide a realistic and interactive user journey.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🔍 Search and filter games by **genre**, **rating**, and **popularity**
+- 🛒 Add games to a cart with real-time updates
+- 🔁 Single Page Application (SPA) powered by **React Router**
+- 📱 Fully responsive layout optimized for desktop, tablet, and mobile
+- 🖼️ Clean UI/UX with intuitive navigation
 
-## Expanding the ESLint configuration
+## 🛠️ Technologies Used
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React
+- React Router
+- JavaScript (ES6+)
+- HTML5 & CSS3
+
+## 🔗 Live Demo
+
+_Coming soon..._  
+(You can deploy it via Vercel, Netlify, or GitHub Pages and update this section with the URL.)
+
+## 📦 Getting Started
+
+Follow these steps to run the project locally:
+
+### Prerequisites
+
+- Node.js and npm installed on your machine
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/rasooli451/GameHunt.git
+
+# Navigate into the project directory
+cd GameHunt
+
+# Install dependencies
+npm install
+
+# Run the development server
+npm run dev
