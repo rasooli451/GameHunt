@@ -19,8 +19,7 @@ GameHunt is a responsive and modern single-page application that simulates a dig
 
 ## 🔗 Live Demo
 
-_Coming soon..._  
-(You can deploy it via Vercel, Netlify, or GitHub Pages and update this section with the URL.)
+[Check It Out](https://game-hunt-five.vercel.app/)
 
 ## 📦 Getting Started
 
